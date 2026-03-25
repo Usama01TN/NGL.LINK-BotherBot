@@ -1,2 +1,2 @@
-# NGL.LINK-Bother-bot
+# NGL.LINK-BotherBot
 Coming soon
