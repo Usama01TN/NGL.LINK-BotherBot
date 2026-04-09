@@ -1,7 +1,7 @@
 # NglBotherBot
 
 ## Overview:
-NglBotherBot is a simple tool designed to send repeated NGL messages to specified usernames. It is intended for light-hearted use among friends.
+NglBotherBot is a simple tool designed to send repeated NGL messages to specified usernames. It is intended for light-hearted use among friends (If you use this tool, you can text me anything using this name `usamaily` lol xD).
 
 Enter one or more `ngl.link` usernames, type a message, and the application will send it multiple times automatically.
 
