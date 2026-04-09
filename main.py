@@ -1,6 +1,6 @@
 # coding=utf-8
 """
-None
+Project entry point.
 """
 from os.path import dirname
 from os import environ
