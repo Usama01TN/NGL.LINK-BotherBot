@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Project builder.
+Nuitka builder.
 """
 # Import builder requirements.
 from os.path import join, dirname, exists, isdir, basename
