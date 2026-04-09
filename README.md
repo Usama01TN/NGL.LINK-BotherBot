@@ -10,10 +10,10 @@ This project is provided for entertainment purposes only.
 The author is not responsible for misuse, including harassment, bullying, or any harmful activity performed with this software.
 
 ## Features:
-- Supports multiple usernames
-- Custom message input
-- Automated repeated sending
-- Compatible with Python 2 and Python 3
+- Supports multiple usernames.
+- Custom message input.
+- Automated repeated sending.
+- Compatible with Python 2 and Python 3.
 
 ## Requirements:
 - Python
@@ -22,7 +22,7 @@ The author is not responsible for misuse, including harassment, bullying, or any
   - `PyQt5` (or `PyQt4`)
   - `PyInstaller` (optional, for building executables)
 
-## Installation
+## Installation:
 1. Install Python.
 2. Install dependencies:
    ```bash
