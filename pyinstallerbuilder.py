@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Project builder.
+PyInstaller project builder.
 """
 # Import builder requirements.
 from os.path import join, dirname, exists
