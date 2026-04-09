@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-None
+QtThemes module.
 """
 from ManyQt.QtWidgets import QApplication, QStyleFactory
 from ManyQt.QtGui import QPalette, QColor
