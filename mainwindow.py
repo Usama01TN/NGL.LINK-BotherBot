@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-NglBotherBot project.
+None
 """
 from ManyQt.QtWidgets import QFileDialog, QMainWindow, QMessageBox
 from ManyQt.QtCore import pyqtSlot, QTimer
@@ -86,34 +86,29 @@ class MainWindow(QMainWindow):
         if msg == '':
             print(self.tr('Empty message box!, please enter any message!'))
             return
-        if vicName in self.__m_usersDict["Bad"]:
+        if vicName in self.__m_usersDict['Bad']:
             print(self.tr('User already marked as invalid: {}').format(vicName))
             return
         try:
             session = NGLWrapper(vicName, timeout)  # type: NGLWrapper
-            # Navigate to ngl.link sent to load cookies.
             if not session.isValidUser():
                 with self.__m_lock:
                     print(self.tr('Could not find user: {}').format(vicName))
-                    if vicName in self.__m_usersDict['Bad']:
-                        self.__m_usersDict['Bad'][vicName] += 1  # type: int
-                    else:
-                        self.__m_usersDict['Bad'][vicName] = 1  # type: int
+                    self.__m_usersDict['Bad'][vicName] = self.__m_usersDict['Bad'].get(
+                        vicName, 0) + 1  # type: int
                     self.__m_totalError += 1  # type: int
             else:
-                # Attempt to log in to ngl.link
                 session.sendQuestion(msg)
                 with self.__m_lock:
                     print(self.tr('Message sent to: {}').format(vicName))
-                    if vicName in self.__m_usersDict['Good']:
-                        self.__m_usersDict['Good'][vicName] += 1  # type: int
-                    else:
-                        self.__m_usersDict['Good'][vicName] = 1  # type: int
+                    self.__m_usersDict['Good'][vicName] = self.__m_usersDict['Good'].get(vicName, 0) + 1  # type: int
                     self.__m_totalSent += 1  # type: int
         except Exception as e:
             with self.__m_lock:
                 print(self.tr('Connection error: {}').format(str(e)))
                 self.__m_totalError += 1  # type: int
+        finally:
+            del session  # <-- Explicitly release session resources.
 
     def bothNow(self, vicName, msg, msgNums, sndTime, timeout=0):
         """
@@ -171,9 +166,12 @@ class MainWindow(QMainWindow):
                     if not usr.strip():  # Skip empty lines.
                         continue
                     # Wait if we've reached the thread limit.
+                    # Replace the while-wait block:
                     while self.__m_totalThreads >= self.__m_ui.threadSpinBox.value() and \
                             not self.__m_stopEvent.is_set():
                         sleep(0.1)
+                        # Prune finished threads to free memory.
+                        self.__m_activeThreads = [t for t in self.__m_activeThreads if t.is_alive()]  # type: list[Thread]
                     if self.__m_stopEvent.is_set():
                         break
                     botThr = Thread(target=self.bothNow, args=(
@@ -198,16 +196,26 @@ class MainWindow(QMainWindow):
                     botThr.daemon = True
                     botThr.start()
                     self.__m_activeThreads.append(botThr)
-            # Wait for all threads to complete.
+            # NEW (waits until each thread actually finishes):
             for thread in self.__m_activeThreads:
-                thread.join(timeout=1)
+                while thread.is_alive():
+                    thread.join(timeout=0.5)
+                    if self.__m_stopEvent.is_set():
+                        break
         except Exception as e:
             print(self.tr('Error in beginBother: {}').format(e))
         finally:
-            # Ensure UI is updated when all threads are done.
-            self.__m_ui.startBtn.setText('Start')
+            for thread in self.__m_activeThreads:
+                while thread.is_alive():
+                    thread.join(timeout=0.5)
+                    if self.__m_stopEvent.is_set():
+                        break
+            if hasattr(self.__m_activeThreads, 'clear'):
+                self.__m_activeThreads.clear()
+            else:
+                self.__m_activeThreads = []  # type: list[Thread]
+            self.__m_ui.startBtn.setText(self.tr(u'Start'))
             self.__m_ui.startBtn.setEnabled(True)
-            # Reset the stop event for next run.
             self.__m_stopEvent.clear()
             self.__m_logTimer.stop()
 
@@ -277,14 +285,14 @@ class MainWindow(QMainWindow):
             errMessage.setText(self.tr('Empty message box!, please enter any message!'))
             errMessage.exec_()
             return
-        if self.__m_ui.startBtn.text().lower() == self.tr('start'):
+        if self.__m_ui.startBtn.text().lower() == self.tr(u'start'):
             # Reset everything for a new run.
             self.__m_stopEvent.clear()  # Clear any existing stop event.
             self.__m_totalSent = 0  # type: int
             self.__m_totalError = 0  # type: int
             self.__m_totalThreads = 0  # type: int
             self.__m_usersDict = {'Good': {}, 'Bad': {}}
-            self.__m_ui.startBtn.setText(self.tr('Stop'))
+            self.__m_ui.startBtn.setText(self.tr(u'Stop'))
             # Start log thread.
             logThr = Thread(target=self.onLogTextEvent)  # type: Thread
             logThr.daemon = True
