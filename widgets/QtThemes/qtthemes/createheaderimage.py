@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-None
+QtThemes module.
 """
 from ManyQt.QtWidgets import QGraphicsScene, QGraphicsView, QApplication, QGraphicsDropShadowEffect, QGraphicsPixmapItem
 from ManyQt.QtCore import QPointF, Qt, QRect, QRectF, QPoint, pyqtSlot, pyqtProperty
