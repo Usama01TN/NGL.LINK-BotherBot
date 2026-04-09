@@ -1,4 +1,4 @@
 # -*- coding: utf-8 -*-
 """
-None
+PyInstaller hooks modules.
 """
