@@ -94,7 +94,7 @@ class NGLWrapper(object):
                     'username': self.__username, 'question': question, 'deviceId': uuid4().__str__(), 'gameSlug': '',
                     'referrer': ''})
         if r.status_code == 200:
-            self.__counter += 1
+            self.__counter += 1  # type: int
             self.success("[{}] Question sent! Question: {}".format(self.__counter, question))
             return True
         self.error('Error sending question. Status code: {}'.format(r.status_code))
