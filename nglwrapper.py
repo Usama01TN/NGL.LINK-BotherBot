@@ -1,6 +1,6 @@
 # coding=utf-8
 """
-None
+Ngl wrapper module.
 """
 from cloudscraper import create_scraper
 from colorama import Style, Fore
