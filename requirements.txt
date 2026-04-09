@@ -1,0 +1,8 @@
+ManyQt
+python-qt5
+PyQt4
+PyInstaller
+nuitka
+pip
+cloudscraper
+colorama
