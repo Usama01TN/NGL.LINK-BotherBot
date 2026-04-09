@@ -19,14 +19,15 @@ The author is not responsible for misuse, including harassment, bullying, or any
 - Python
 - pip packages:
   - `cloudscraper`
+  - `ManyQt`
   - `PyQt5` (or `PyQt4`)
-  - `PyInstaller` (optional, for building executables)
+  - `PyInstaller` (or/and `Nuitka`) (optional, for building executables)
 
 ## Installation:
 1. Install Python.
 2. Install dependencies:
    ```bash
-   pip install cloudscraper PyQt5 PyInstaller
+   pip install cloudscraper ManyQt PyQt5 PyInstaller
     ```
 
 3. (Optional) Build executable using:
