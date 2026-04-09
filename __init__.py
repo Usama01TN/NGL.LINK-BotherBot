@@ -1,6 +1,6 @@
 # coding=utf-8
 """
-None
+NglBotherBot project.
 """
 from os.path import dirname
 from sys import path
@@ -13,4 +13,4 @@ try:
 except:
     from nglwrapper import NGLWrapper
 
-__all__ = ['NGLWrapper']  # type: str
+__all__ = ['NGLWrapper']  # type: list[str]
