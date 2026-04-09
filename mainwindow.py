@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-None
+NglBotherBot project.
 """
 from ManyQt.QtWidgets import QFileDialog, QMainWindow, QMessageBox
 from ManyQt.QtCore import pyqtSlot, QTimer
