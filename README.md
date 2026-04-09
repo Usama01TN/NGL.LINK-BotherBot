@@ -1,34 +1,56 @@
-# Program Instructions:
+# NglBotherBot
 
-this app uses To Joke Around With Your Friends to automatic send NGL messages many times directly.
+## Overview:
+NglBotherBot is a simple tool designed to send repeated NGL messages to specified usernames. It is intended for light-hearted use among friends.
 
-Simply enter or load in a username(s) list for the ngl.link, finally enter in a message you would like to spam to them!
+Enter one or more `ngl.link` usernames, type a message, and the application will send it multiple times automatically.
 
-# Note:
+## Disclaimer:
+This project is provided for entertainment purposes only.  
+The author is not responsible for misuse, including harassment, bullying, or any harmful activity performed with this software.
 
-This program was created for fun. I am not responsible for any misuse For Example (Harassing & Bullying) or how you
-choose to use my software.
+## Features:
+- Supports multiple usernames
+- Custom message input
+- Automated repeated sending
+- Compatible with Python 2 and Python 3
 
-# Credits:
+## Requirements:
+- Python
+- pip packages:
+  - `cloudscraper`
+  - `PyQt5` (or `PyQt4`)
+  - `PyInstaller` (optional, for building executables)
 
-This app supports Python 2 & 3
+## Installation
+1. Install Python.
+2. Install dependencies:
+   ```bash
+   pip install cloudscraper PyQt5 PyInstaller
+````
 
-Use credit if use this.
+3. (Optional) Build executable using:
 
-# How to run ?
+   * `pyinstallerbuilder.py`
+   * `nuitkabuilder.py`
 
-1.Install python.
+## Usage:
 
-2.Install pip cloudscraper, python-qt5, PyQt4, PyInstaller or (Run pyinstallerbuilder.py or nuitkabuilder.py for app
-compiling.)
+Run the application:
 
-3.run python "main.py" for simple usage or run ("NGL.BOT.py" or "NGL.BOT.V2.py") for advanced usage.
+```bash
+python main.py
+```
 
-# Screenshots:
+## Credits:
 
-![screenshot1](screenshots/screen1.PNG)
-![screenshot2](screenshots/screen2.PNG)
+If you use or modify this project, include proper credit.
 
-# Video:
+## Screenshots:
+
+![Screenshot 1](screenshots/screen1.PNG)
+![Screenshot 2](screenshots/screen2.PNG)
+
+## Video:
 
 Uploading...
