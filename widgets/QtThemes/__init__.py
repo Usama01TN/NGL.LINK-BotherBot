@@ -1,6 +1,6 @@
 # coding=utf-8
 """
-None
+QtThemes module.
 """
 from os.path import dirname
 from sys import path
