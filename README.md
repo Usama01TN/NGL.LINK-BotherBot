@@ -27,7 +27,7 @@ The author is not responsible for misuse, including harassment, bullying, or any
 2. Install dependencies:
    ```bash
    pip install cloudscraper PyQt5 PyInstaller
-````
+    ```
 
 3. (Optional) Build executable using:
 
