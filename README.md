@@ -49,8 +49,7 @@ If you use or modify this project, include proper credit.
 
 ## Screenshots:
 
-![Screenshot 1](screenshots/screen1.PNG)
-![Screenshot 2](screenshots/screen2.PNG)
+![Screenshot](screenshot.PNG)
 
 ## Video:
 
