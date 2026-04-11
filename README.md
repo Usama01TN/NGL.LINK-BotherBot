@@ -49,7 +49,7 @@ If you use or modify this project, include proper credit.
 
 ## Screenshots:
 
-![Screenshot](screenshot.PNG)
+![Screenshot](screenshot.png)
 
 ## Video:
 
